@@ -4,9 +4,15 @@
         <!-- Default form login -->
         <form action="/login" method="POST">
             <p class="h4 mb-4 text-left">Login to continue</p>
+            {{#if login}}
+            <p class="invalid  mb-4 text-left">Invalid username or password</p>
+            {{/if}}
              <!-- Email --> <label for="mail" class="in">Name</label> 
              <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" 
-             placeholder="Enter Username" name="Name" <!-- Password --> <label for="pass" class="in">Password</label> 
+             placeholder="Enter Username" name="Name" 
+              
+             <label for="pass" class="in"></label>
+              <label for="pass" class="in">Password</label>
              <input type="password" id="defaultLoginFormPassword" class="form-control mb-4"
               placeholder="Enter Password" name="Password">
             <div class="d-flex justify-content-left">
