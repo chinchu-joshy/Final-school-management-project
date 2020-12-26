@@ -1,11 +1,24 @@
 module.exports={
     TEACHER_COLLECTION:"teacher",
-    SERVICEID:'VA8f83b5fa696e6046f336e8d5b68355d0',
-    ACCOUNTSID:'ACd62a321129d27c9dd5c8dc12592c978b',
-    AUTH_TOCKEN:'357e39894b2acb3420b717ac5804a016',
+    SERVICEID:'VAe4ffd2a81521022333fe11a7f4066b49',
+    ACCOUNTSID:'ACeb64975de3696c63c958ff627ab8472b',
+    AUTH_TOCKEN:'ee311e0af9c26406896d25878c0001bc',
     STUDENT_COLLECTION:'student',
     TEACHER_collection:'image',
     STUDENT_DETAILS:'details',
-    STUDENT_LOGIN:'login-student'
-       
+    STUDENT_LOGIN:'studentlogin',
+    STUDENT_ASSIGNED_WORK:'studentassignedwork',
+    STUDENT_ASSIGNED_PDF:'givenwork',
+    STUDENT_NOTE:'NOTEPDF',
+    STUDENT_VIDEO:'vedio',
+    STUDENT_NOTE_LINK:'studentlink',
+    SUBMITTED_WORKS:'assignments',
+    ANNOUNCEMENT:'announcement',
+    STATUS:'status',
+    STUDENT_NORMALEVENT:"normalevent",
+    STUDENT_PAYEVENT:"payevent",
+    STUDENT_PAYMENT:"payment",
+    GALLERY:'gallery',
+    TOKEN:"token"
+    
     }

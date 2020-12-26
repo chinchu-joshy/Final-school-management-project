@@ -227,3 +227,49 @@ color: #0b9c90;
 .student{
   font-size: small;
 }
+.vc {border-left: 6px solid #0b9c90;
+  border-radius: 1rem;
+  
+  padding: 20px;
+ 
+  border-top-style: groove;
+  border-top-color:#0b9c90 ;
+  border-bottom-style: groove;
+  border-bottom-color:#0b9c90;
+  border-right: 6px solid#0b9c90;
+  
+}
+.uploads{
+  padding: .5rem;
+}
+.upload-box{
+margin-top: .5rem;
+}
+.open-pdf{
+  color: #9e280b;
+  font:smaller;
+}
+.open-video{
+  color: #069144;
+  font:smaller;
+}
+.open-link{
+  color: #2f83d1;
+  font:smaller;
+}
+.content-head{
+ font-size:large;
+}
+.content-text{
+  height: 3rem;
+}
+.mark{
+  width: max-content;
+}
+.asgnmt{
+ color: #740615;
+ font-size: medium;
+}
+.tab-class{
+  margin-left: 5rem;
+}

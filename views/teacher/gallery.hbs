@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+        <div class="col-sm-8 mt-3">
+         
+
+          <form action="/upload-image" method="post" enctype="multipart/form-data">
+           <div class="form-group">
+              <label for="example-input-file">Type something.... </label>
+              <input type="text"   name="title"   class="form-control-file border" required
+               >
+            </div>
+            <div class="form-group">
+              <label for="example-input-file"> </label>
+              <input type="file"   name="photos"   class="form-control-file border" onchange="readURL(this);" 
+               >
+                      <img id="blah" src="#" alt="your image" style="width:100px;heignt:100px"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-12">
+            {{#each picture}}
+                 
+                 <img id="image" src='/gallery/{{this._id}}.png' style="
+                 width:100px;height:100px display:block">  
+          
+          {{/each}}
+        </div>
+
+      </div>  
+</div>
+
+<script>
+    import Cropper from 'cropperjs';
+ 
+const image = document.getElementById(id);
+const cropper = new Cropper(image, {
+  aspectRatio: 16 / 9,
+  crop(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+    console.log(event.detail.width);
+    console.log(event.detail.height);
+    console.log(event.detail.rotate);
+    console.log(event.detail.scaleX);
+    console.log(event.detail.scaleY);
+  },
+});
+
+</script>

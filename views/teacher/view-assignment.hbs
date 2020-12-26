@@ -1,0 +1,73 @@
+<section>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="margin-left: 45%;">
+           
+            <div class="dropdown">
+  <button class="dropbtn">Attendance</button>
+   {{#each details}}
+  <div class="dropdown-content">
+  <a href="/month/?name=0&student={{this.student}}" style="font-size: small;">January</a>
+  <a href="/month/?name=1&student={{this.student}}" style="font-size: small;">February</a>
+  <a href="/month/?name=2&student={{this.student}}" style="font-size: small;">March</a>
+   <a href="/month/?name=3&student={{this.student}}" style="font-size: small;">April</a>
+  <a href="/month/?name=4&student={{this.student}}" style="font-size: small;">May</a>
+  <a href="/month/?name=5&student={{this.student}}" style="font-size: small;">June</a>
+  <a href="/month/?name=6&student={{this.student}}" style="font-size: small;">July</a>
+  <a href="/month/?name=7&student={{this.student}}" style="font-size: small;">August</a>
+  <a href="/month/?name=8&student={{this.student}}" style="font-size: small;">September</a>
+   <a href="/month/?name=9&student={{this.student}}" style="font-size: small;">October</a>
+  <a href="/month/?name=10&student={{this.student}}" style="font-size: small;">November</a>
+  <a href="/month/?name=11&student={{this.student}}" style="font-size: small;">Dcember</a>
+  </div>
+  {{/each}}
+</div>
+
+          </div>
+           
+              <div class="col-md-12 col-12">
+ <table class="table mt-5 ml-2">
+  <thead class="table-design" >
+    <tr >
+      
+      
+       <th scope="col"class="student-details">Assigned works</th>
+        <th scope="col"class="student-details">Submitted work</th>
+         <th scope="col"class="student-details">Submitted date</th>
+         <th scope="col"class="student-details">Given mark</th>
+       <th scope="col"class="student-details">Submit</th>
+      
+       
+    </tr>
+  </thead>
+  <tbody>
+ {{#each view}}
+ <form class=" today-form" action="/mark-submit" method="post" enctype="multipart/form-data"></form>
+    <tr>
+     
+     
+     
+      <td class="student">{{this.workname}}</td>
+      <td class="student"><a class="asgnmt" href="/assignments/{{this.item}}.pdf"><i class="fas fa-book-open">Open work</i></a></td>
+      <td class="student">{{this.workdate}}</td>
+      <td class="student">
+         
+          <input type="text" class=" mark" name="mark" value="{{this.mark}}" >
+        
+      </td>
+      <td >
+         <button type="submit" class="btn btn-success asgnmt ">Submit</button>
+        </td>
+       
+    </tr>
+    </form>
+    {{/each}}
+           </tbody>
+      </table>
+
+       
+    
+            </div>
+        </div>
+    </div>
+</section>

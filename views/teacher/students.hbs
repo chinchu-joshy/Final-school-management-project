@@ -21,15 +21,15 @@
        <th scope="col"class="student-details">Active backlogs</th>
        <th scope="col"class="student-details">Edit</th>
        <th scope="col"class="student-details">Delete</th>
-       <th scope="col"class="student-details">Invite via OTP</th>
+       
     </tr>
   </thead>
   <tbody>
       {{#each students}}
     <tr>
      
-      <th class="student"scope="row">{{@index}}</th>
-      <td ><img style="width:50px;height:50px" src="/images/{{this._id}}.jpg"></td>
+      <th class="student"scope="row">{{this.rollnumber}}</th>
+      <td ><a href="/viewassignment/{{this._id}}"><img style="width:50px;height:50px" src="/images/{{this._id}}.jpg"></a></td>
       <td class="student">{{this.name}}</td>
       <td class="student">{{this.mobile}}</td>
       <td class="student" >{{this.email}}</td>
@@ -45,9 +45,7 @@
         <a href="/delete-student/{{this._id}}" class="btn btn-danger"
          onclick="return confirm('are you want to delete {{this.name}} ?')">Delete</a>
         </td>
-        <td >
-        <a href="/get/{{this._id}}" class="btn btn-success">Send OTP</a>
-        </td>
+        
         
     </tr>
     {{/each}}

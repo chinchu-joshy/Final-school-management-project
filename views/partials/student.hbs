@@ -10,15 +10,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active text-white">
-              {{#if user}}
-
-                <a class="btn btn-danger" href="/student-logout">Logout</a><span class="sr-only">(current)</span>
-              {{else}}
-                <a class="btn btn-danger" href="/student-login">Login</a><span class="sr-only">(current)</span>
-              {{/if}}
-              
+            {{#if user}}
+             <li class="nav-item active text-white">
+              <a class="btn btn-danger " href="/student-out">Logout <span class="sr-only">(current)</span></a>
             </li>
+            {{else}}
+             <li class="nav-item active text-white">
+              <a class="btn btn-danger " href="/student-login">Login <span class="sr-only">(current)</span></a>
+            </li>
+            {{/if}}
+
+            {{#if look}}
+            <li class="nav-item active text-white">
+              <a class="btn btn-danger " style="color:blue" href="/student-out">NO DUE WORKS<span class="sr-only">(current)</span></a>
+            </li>
+            {{else}}
+            <li class="nav-item active text-white">
+              <a class="btn btn-danger " href="/student-out">YOU HAVE PENDING WORKS<span class="sr-only">(current)</span></a>
+            </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="#head2"></a>
             </li>
@@ -41,20 +51,25 @@
      <div class="container section">
        <div class="row">
          <div class="col">
+           {{#if user}}
            <div class="sidebar">
-  <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-  {{#if user}}
-  <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+  <a href="/student-home"><i class="fa fa-fw fa-home"></i> Home</a>
+ 
+  <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
   
-  <a href="/students"><i class="fa fa-fw fa-user-graduate"></i>Classmates</a>
+  <a href="/today-task"><i class="fas fa-clock"></i>Todays task</a>
  
-  <a href="/uploads"><i class="fa fa-fw fa-arrow-circle-up"></i>Uploads</a>
- 
-  <a href="#contact"><i class="fa fa-fw fa-arrow-circle-up"></i>Announcements</a>
- 
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i>Photos</a>
-  {{/if}}
+  <a href="/class-works"><i class="far fa-edit"></i>Class works</a>
+  <a href="/study-materials"><i class="fa fa-fw fa-arrow-circle-up"></i>Study materials</a>
+  <a href="/class-video"><i class="fas fa-video"></i>Class Video</a>
+  <a href="/student-announcement"><i class="fas fa-fw fa-bullhorn"></i></i>Announcements</a>
+  <a href="/student-events"><i class="fas fa-clipboard-list"></i></i>Events</a>
+ <a href="/student-attendance"><i class="far fa-edit"></i>Attendance</a>
+  <a href="/student-photos"><i class="fas fa-fw fa-images"></i>Photos</a>
+  
 </div>
+{{/if}}
+
     
          </div>
        </div>

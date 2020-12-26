@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6   col-12">
+             <h3 class="ml-5" style="color: green;">Events</h3>
+              <ul class="list-group">
+           {{#each events}}
+           
+           {{#if this.file}}
+
+          <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i>  <br>{{this.main}} 
+          <br>
+        
+        <a class="open-pdf"  href="/events/{{this._id}}.jpg"><i class="fas fa-images"></i></a>
+       <a class="open-pdf" href="/events/{{this._id}}.pdf"><i class="fas fa-file-pdf"></i></a>
+       <a class="open-pdf" href="/events/{{this._id}}.mp4"><i class="fas fa-video"></i></a>
+
+          </li>
+              
+          {{else}}
+           <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> {{this.main}} </li>
+          
+  {{/if}}
+  {{/each}}
+</ul>
+        </div>
+        <div class="col-md-6   col-12">
+             {{#each payevents}}
+            <form class="background-form mt-2" action="/payment" method="post" enctype="multipart/form-data">
+
+             <h3 style="color:red ;">Paid events</h3>
+              <ul class="list-group">
+           
+           
+          
+
+          <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> 
+             {{this.main}} 
+
+          <br>
+        {{#if this.file}}
+        <a class="open-pdf"  href="/events/{{this._id}}.jpg"><i class="fas fa-images"></i></a>
+       <a class="open-pdf" href="/events/{{this._id}}.pdf"><i class="fas fa-file-pdf"></i></a>
+       <a class="open-pdf" href="/events/{{this._id}}.mp4"><i class="fas fa-video"></i></a>
+       {{/if}}
+       <br>
+        <input type="text" name="username" value="{{../name}}" hidden>
+       <input type="text" name="email" value="{{../email}}" hidden>
+        <input type="text" name="event" value="{{this.main}}" hidden>
+       <input type="text" name="price" value="{{this.amount}}" hidden>
+        <button type="submit" class="btn btn-success mt-4">Pay :Rs{{this.amount}}</button>
+          </li>
+              
+         
+ 
+  
+</ul>
+            </form>
+            {{/each}}
+        </div>
+    </div>
+</div>

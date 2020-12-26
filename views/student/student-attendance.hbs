@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 ml-5 tab-class">
+
+    
+    <table class="table mt-5 ml-2">
+      <thead class="table-design" >
+    <tr >
+      
+      
+      
+        <th scope="col"class="student-details">Attendance</th>
+        <th scope="col"class="student-details">Date</th>
+       
+       <th scope="col"class="student-details"> <div class="dropdown">
+  <button class="dropbtn" style="font-size: small;">Quick view</button>
+ 
+   {{#each details}}
+  <div class="dropdown-content">
+  <a href="/month/?name=0&student={{this.student}}" style="font-size: small;">January</a>
+  <a href="/month/?name=1&student={{this.student}}" style="font-size: small;">February</a>
+  <a href="/month/?name=2&student={{this.student}}" style="font-size: small;">March</a>
+   <a href="/month/?name=3&student={{this.student}}" style="font-size: small;">April</a>
+  <a href="/month/?name=4&student={{this.student}}" style="font-size: small;">May</a>
+  <a href="/month/?name=5&student={{this.student}}" style="font-size: small;">June</a>
+  <a href="/month/?name=6&student={{this.student}}" style="font-size: small;">July</a>
+  <a href="/month/?name=7&student={{this.student}}" style="font-size: small;">August</a>
+  <a href="/month/?name=8&student={{this.student}}" style="font-size: small;">September</a>
+   <a href="/month/?name=9&student={{this.student}}" style="font-size: small;">October</a>
+  <a href="/month/?name=10&student={{this.student}}" style="font-size: small;">November</a>
+  <a href="/month/?name=11&student={{this.student}}" style="font-size: small;">Dcember</a>
+  </div>
+  {{/each}}
+</div>
+</div></th>
+       
+    </tr>
+  </thead>  
+    <tbody>
+   
+        {{#each details}}
+        <tr>
+     
+      
+      
+      
+    
+   
+     
+       <td class="student">{{this.attendance}}</td>
+      
+      <td class="student">{{this.Date}}</td>
+      
+
+    
+    </tr>
+   {{/each}}
+    </tbody>
+    </table>
+
+    </div>
+   
+        
+  <div class="col">
+    
+  </div>
+   
+    
+     
+    </div>
+</div>
