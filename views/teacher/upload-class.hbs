@@ -4,16 +4,16 @@
             <div class="col-md-6 upload-box">
        <form class="background-form vc" action="/student-class" method="post" enctype="multipart/form-data">
        <div class="form-group">
-    <label class="heading"for="">Type Heading</label>
-    <input type="text" class="form-control" name="head" required >
+    <label class="heading"for="content">Type Heading</label>
+    <input type="text" class="form-control" name="head" id="content" required >
    
   </div>
   <div class="form-group" >
-    <label  class="heading"for="">Upload Video</label>
-    <input type="file" class="form-control"  name="upload"  >
+    <label  class="heading"for="video">Upload Video</label>
+     <input type="file" class="form-control"  name="upload" id="video" >
     
   </div>
-  <button type="submit" class="btn btn-success mt-4" > Submit</button>
+  <button type="submit" class="btn btn-success mt-4" id="send" > Submit</button>
   </form> 
   
     </div>
@@ -61,3 +61,6 @@
         
     </div>
 </div>
+
+
+</script>

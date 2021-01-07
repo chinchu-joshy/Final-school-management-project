@@ -1,13 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6   col-12">
-             <h3 class="ml-5" style="color: green;">Events</h3>
+            
               <ul class="list-group">
            {{#each events}}
            
            {{#if this.file}}
 
-          <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i>  <br>{{this.main}} 
+          <li class="list-group-item"> <h3 class="ml-1" style="color: green;">Events</h3><br>
+            <i class="far fa-clock" style="color: green;"> {{this.date}}</i>  <br>{{this.main}} 
           <br>
         
         <a class="open-pdf"  href="/events/{{this._id}}.jpg"><i class="fas fa-images"></i></a>
@@ -17,7 +18,8 @@
           </li>
               
           {{else}}
-           <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> {{this.main}} </li>
+           <li class="list-group-item"> <h3 class="ml-1" style="color: green;">Events</h3><br>
+             <i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> {{this.main}} </li>
           
   {{/if}}
   {{/each}}
@@ -25,16 +27,20 @@
         </div>
         <div class="col-md-6   col-12">
              {{#each payevents}}
-            <form class="background-form mt-2" action="/payment" method="post" enctype="multipart/form-data">
-
-             <h3 style="color:red ;">Paid events</h3>
+            
+            
               <ul class="list-group">
            
            
           
 
-          <li class="list-group-item"><i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> 
-             {{this.main}} 
+          <li class="list-group-item">
+             <h3 style="color:red ;">Paid events</h3><br>
+            <i class="far fa-clock" style="color: green;"> {{this.date}}</i><br> 
+             {{this.main}} <br>
+             Event price :{{this.amount}}<br>
+             <p style="color: blue; font-weight:bold;">Select a payment method</p>
+     
 
           <br>
         {{#if this.file}}
@@ -47,15 +53,19 @@
        <input type="text" name="email" value="{{../email}}" hidden>
         <input type="text" name="event" value="{{this.main}}" hidden>
        <input type="text" name="price" value="{{this.amount}}" hidden>
-        <button type="submit" class="btn btn-success mt-4">Pay :Rs{{this.amount}}</button>
+       <a href="/paypal/{{this._id}}" class="card-body  ml-1"><img class="paypal" src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg"></a> 
+      <a href="/razorpay/{{this._id}}" class="card-body  ml-1"><img class="raz" src="https://cdn.razorpay.com/logo.svg"></a>
+       <a href="/paytm/{{this._id}}" class="card-body  ml-1"><img class="ptm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/250px-Paytm_Logo_%28standalone%29.svg.png"></a>
+ 
           </li>
               
          
  
   
 </ul>
-            </form>
+            
             {{/each}}
         </div>
+        
     </div>
 </div>

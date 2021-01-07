@@ -23,8 +23,10 @@ function enablefield(){
       
   }
   function enablefile(){
+
    
     document.getElementById("myworld").disabled = false;
+    
 
   
 }
@@ -35,7 +37,7 @@ function enablefiles(){
 
 }
  
-  var dates=document.getElementsById("val").innerHTML
+  var dates=document.getElementsById("date").innerHTML
   var value=document.getElementById("present").innerHTML
  
  

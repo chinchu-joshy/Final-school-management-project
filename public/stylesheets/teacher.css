@@ -272,4 +272,15 @@ margin-top: .5rem;
 }
 .tab-class{
   margin-left: 5rem;
+}#canvas {
+  height: 600px;
+  width: 600px;
+  background-color: #ffffff;
+  cursor: default;
+  border: 1px solid black;
+}
+/** table**/
+.teacher-payhead{
+  margin-left: 42%;
+  margin-top: 5rem;
 }

@@ -1,26 +1,25 @@
-<div class="containsr">
+<div class="container gallery-container">
     <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="gallery-head">School Gallery</h2>
+        </div>
+        
          {{#each pic}}
-        <div class="card col-md-4 card-style card-today ml-5" style="width: 18rem;">
-  
-  <div class="card-body">
        
-       <div class="profile-img">
-                            <img style="width:200px;height:200px" src="/gallery/{{this._id}}.png" id="imageId">
-                            <div class="file btn btn-lg btn-primary" >
-                               {{this.title}}
-                                
-                            </div>
+
+       <div class="profile-img ml-2">
+                            <img style="width:150px;height:150px" class="ml-2" src="/upload/{{this.value}}" id="imageId">
+                           
                             
                         </div>
                      
             
     
      
-  </div>
   
   
-</div>
+  
+
 {{/each}}
   
     </div>

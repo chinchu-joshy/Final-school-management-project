@@ -15,7 +15,7 @@
      <input type="file" class="form-control" name="head" >
     <input type="text" name="studentId" value="{{../students}}" hidden>
       <input type="text" name="workId" value="{{this._id}}" hidden>
-       <input type="text" name="works" value="{{this.head}}" hidden>
+       <input type="text" name="works" value="{{this.topic}}" hidden>
   </div>
   
     
@@ -34,7 +34,7 @@
 <div class="card col-md-4 card-style card-today" style="width: 18rem;">
   
   <div class="card-body">
-         <form class=" today-form" action="/today-task" method="post" enctype="multipart/form-data">
+         <form class=" today-form" action="/class-task" method="post" enctype="multipart/form-data">
       <div class="form-group">
           <a class="open-pdf" href="/uploads/{{this._id}}.{{this.file}}"><i class="fas fa-file-pdf"></i></a>
     <label class="heading content-head"for="">{{this.topic}}</label>

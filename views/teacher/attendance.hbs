@@ -1,32 +1,13 @@
 <div class="container">
   
     <div class="row">
-      <div class="col">
-        <div class="col-md-12" style="margin-left: 45%;">
-           
-            <div class="dropdown">
-  <button class="dropbtn">Attendance</button>
-   
-  <div class="dropdown-content">
-  <a href="/months/?name=0" style="font-size: small;">January</a>
-  <a href="/months/?name=1" style="font-size: small;">February</a>
-  <a href="/months/?name=2" style="font-size: small;">March</a>
-   <a href="/months/?name=3" style="font-size: small;">April</a>
-  <a href="/months/?name=4" style="font-size: small;">May</a>
-  <a href="/months/?name=5" style="font-size: small;">June</a>
-  <a href="/months/?name=6" style="font-size: small;">July</a>
-  <a href="/months/?name=7" style="font-size: small;">August</a>
-  <a href="/months/?name=8" style="font-size: small;">September</a>
-   <a href="/months/?name=9" style="font-size: small;">October</a>
-  <a href="/months/?name=10" style="font-size: small;">November</a>
-  <a href="/months/?name=11" style="font-size: small;">Dcember</a>
-  </div>
-  
-</div>
-
-          </div>
-           
+      <div class="col-md-12">
+     <form action="/find-attendance" method="POST" >
+       <input type="date" name="date" > 
+       <button type="submit" style="width: max-content;">Find</button>
+     </form>
       </div>
+      
        
             <div class="col-md-12 ml-5 tab-class">
 

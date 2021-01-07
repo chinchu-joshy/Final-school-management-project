@@ -1,29 +1,13 @@
 <section>
     <div class="container">
         <div class="row">
-          <div class="col-md-12" style="margin-left: 45%;">
-           
-            <div class="dropdown">
-  <button class="dropbtn">Attendance</button>
-   {{#each details}}
-  <div class="dropdown-content">
-  <a href="/month/?name=0&student={{this.student}}" style="font-size: small;">January</a>
-  <a href="/month/?name=1&student={{this.student}}" style="font-size: small;">February</a>
-  <a href="/month/?name=2&student={{this.student}}" style="font-size: small;">March</a>
-   <a href="/month/?name=3&student={{this.student}}" style="font-size: small;">April</a>
-  <a href="/month/?name=4&student={{this.student}}" style="font-size: small;">May</a>
-  <a href="/month/?name=5&student={{this.student}}" style="font-size: small;">June</a>
-  <a href="/month/?name=6&student={{this.student}}" style="font-size: small;">July</a>
-  <a href="/month/?name=7&student={{this.student}}" style="font-size: small;">August</a>
-  <a href="/month/?name=8&student={{this.student}}" style="font-size: small;">September</a>
-   <a href="/month/?name=9&student={{this.student}}" style="font-size: small;">October</a>
-  <a href="/month/?name=10&student={{this.student}}" style="font-size: small;">November</a>
-  <a href="/month/?name=11&student={{this.student}}" style="font-size: small;">Dcember</a>
-  </div>
-  {{/each}}
-</div>
-
+          <div class="col-md-12 card mt-2" style="margin-left: 25%;background-color:rgb(17, 17, 56)">
+        
+        {{#each update}} 
+        <p style="color: rgb(238, 238, 241); background-color:rgb(17, 17, 56)">{{this.Date}}  {{this.attendance}}</p>
+        {{/each}}
           </div>
+          
            
               <div class="col-md-12 col-12">
  <table class="table mt-5 ml-2">
@@ -55,6 +39,7 @@
           <input type="text" class=" mark" name="mark" value="{{this.mark}}" >
         
       </td>
+      
       <td >
          <button type="submit" class="btn btn-success asgnmt ">Submit</button>
         </td>
@@ -64,10 +49,12 @@
     {{/each}}
            </tbody>
       </table>
+      
 
        
     
             </div>
+              
         </div>
     </div>
 </section>

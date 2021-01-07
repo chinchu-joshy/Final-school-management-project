@@ -2,6 +2,12 @@ var db=require('../config/connection')
 const collections=require('../config/collection')
 const bcrypt=require('bcrypt')
 const objectId=require('mongodb').ObjectID
+const Razorpay=require('razorpay')
+var instance = new Razorpay({
+    key_id: 'rzp_test_fu47ibK55eQ8Vq',
+    key_secret: 'L2KvFIhQ7a0qwEQJ1bEzEoGs',
+
+  });
 module.exports={
     checkAccount:(teacherdata)=>{
         //console.log(teacherdata)
@@ -28,7 +34,7 @@ module.exports={
     addStudent:(studentId)=>{
         return new Promise((resolve,reject)=>{
             db.get().collection(collections.STUDENT_COLLECTION).insertOne(studentId).then((data)=>{
-                console.log(data)
+                
            resolve(data.ops[0]._id)
            
 
@@ -86,33 +92,7 @@ findNumber:(teacherId)=>{
         })
     })
 },
-VerifyStudent:(studentId)=>{
-    return new Promise((resolve,reject)=>{
-        db.get().collection(collections.STUDENT_DETAILS).insertOne(studentId).then((data)=>{
-            //console.log(data.ops[0])
-            resolve(data.ops[0])
-        })
-    })
-},
 
-OtpSend:(studentId)=>{
-    return new Promise(async(resolve,reject)=>{
-        let response={};
-        let studentval= await db.get().collection(collections.STUDENT_COLLECTION).findOne({rollnumber:studentId.rollnumber})
-            //console.log(student)
-            if(studentval){
-                response.student=studentval
-                response.status=true
-                resolve(response)      
-            }else{
-                response.status=false
-                response.val=true
-              resolve(response)
-            }
-            
-        })
-    
-},
 addWorks:(work)=>{
     return new Promise((resolve,reject)=>{
         db.get().collection(collections.STUDENT_ASSIGNED_WORK).insertOne(work).then((data)=>{
@@ -234,7 +214,7 @@ assignment:(submit)=>{
         //console.log(submit)
            let work={
                item:objectId(submit.workId),
-               student:objectId(submit.studentId),
+               student:submit.studentId,
                workname:submit.works,
                workdate:year + "-" + month + "-" + day
             }
@@ -253,7 +233,7 @@ assignment:(submit)=>{
     },
     getAssignment:(body)=>{
         return new Promise(async(resolve,reject)=>{
-           let data= await db.get().collection(collections.SUBMITTED_WORKS).find({student:objectId(body)}).toArray()
+           let data= await db.get().collection(collections.SUBMITTED_WORKS).find({student:body}).toArray()
            resolve(data)
             
         })
@@ -293,7 +273,7 @@ assignment:(submit)=>{
            // console.log(objectId(work))
             let assignments=await db.get().collection(collections.SUBMITTED_WORKS)
             .find({assignment:objectId(work)}).toArray()
-            console.log(assignments)
+           
             resolve(assignments)
         })
     },
@@ -329,7 +309,7 @@ assignment:(submit)=>{
                     file:type 
                 }
                 db.get().collection(collections.ANNOUNCEMENT).insertOne(obj).then((data)=>{
-                    console.log(data.ops[0])
+                    
                   resolve(data.ops[0]._id)
                 })
             }
@@ -373,48 +353,13 @@ assignment:(submit)=>{
             //console.log(data)
         })
     },
-    dosignup:(userid)=>{
-        return new Promise(async(resolve,reject)=>{
-            userid.password=await bcrypt.hash(userid.password,10)
-            db.get().collection(collections.STUDENT_LOGIN).insertOne(userid).then((data)=>{
-                resolve(data.ops[0])
-            })
-        })
-    },
-    dologin:(userdata)=>{
-        return new Promise(async(resolve,reject)=>{
-            let loginstatus=false
-            let response={}
-            let user=await db.get().collection(collections.STUDENT_LOGIN).findOne({email:userdata.email})
-            if(user){
-              
-                 bcrypt.compare(userdata.password,user.password).then((status)=>{
-                     if(status){
-                         //console.log("success")
-                         response.user=user
-                         response.status=true
-                         resolve(response)
-
-                     }else{
-                         //console.log("fail")
-                         resolve({status:false})
-
-                     }
-
-                 })
    
-            }else{
-                //console.log("fail")
-                resolve({status:false})
-            } 
-        })
-    },
     addStatus:(status)=>{
         return new Promise(async(resolve,reject)=>{
             let stu=status.topic;
             let att=status.attendance;
             let students=status.student;
-            console.log(students)
+            console.log(status)
             let date_ob = new Date();
             let day = ("0" + date_ob.getDate()).slice(-2);
             let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -430,6 +375,7 @@ assignment:(submit)=>{
             }
 
           let check=await db.get().collection(collections.STATUS).findOne({topic:stu,student:students})
+          console.log(check)
           if(check){
               
             
@@ -448,6 +394,7 @@ assignment:(submit)=>{
             db.get().collection(collections.STATUS).insertOne(obj).then((response)=>{
                
                 resolve(response.ops[0])
+                console.log(response.ops[0])
             })
          
         }
@@ -493,7 +440,7 @@ assignment:(submit)=>{
         return new Promise(async(resolve,reject)=>{
             
             
-            let data= await db.get().collection(collections.STUDENT_COLLECTION).findOne({_id:objectId(id)})
+            let data= await db.get().collection(collections.STUDENT_COLLECTION).findOne({name:id})
             let students=data.name
             let values=await db.get().collection(collections.STATUS).aggregate([
                 {
@@ -544,17 +491,7 @@ assignment:(submit)=>{
 
         })
     },
-    getStatusStart:(user,dates)=>{
-        return new Promise(async(resolve,reject)=>{
-            let value=await db.get().collection(collections.STATUS).find({Date:dates,student:user,attendance:'present'}).toArray()
-            resolve(value)
-            console.log(value)
-
-            
-            
-        })
-
-    },
+    
     addVideo:(video)=>{
         return new Promise((resolve,reject)=>{
 
@@ -674,10 +611,31 @@ getNormalevent:()=>{
         resolve(value)
     })
 },
+addTopaymentList:(id,name)=>{
+    return new Promise(async(resolve,reject)=>{
+        
+        let obj={
+            orderId:objectId(id) ,
+            student:name
+        }
+       
+        db.get().collection(collections.CHECK_PAYMENT).insertOne(obj).then(()=>{
+            resolve()  
+        })
+       
+    })
+},
 getPayevent:()=>{
     return new Promise(async(resolve,reject)=>{
         let value=await db.get().collection(collections.STUDENT_PAYEVENT).find().toArray()
         resolve(value)
+    })
+},
+getOneEvent:(id)=>{
+    return new Promise(async(resolve,reject)=>{
+        let value=await db.get().collection(collections.STUDENT_PAYEVENT).findOne({_id:objectId(id)})
+        resolve(value)
+        
     })
 },
 addpayment:(payid)=>{
@@ -686,7 +644,8 @@ addpayment:(payid)=>{
             student:payid.username,
             emailid:payid.email,
             events:payid.event,
-            prices:payid.price
+            prices:payid.price,
+            orderId:payid.id
         }
         db.get().collection(collections.STUDENT_PAYMENT).insertOne(obj).then((data)=>{
             resolve(data.ops[0])
@@ -708,13 +667,14 @@ getgallery:()=>{
         resolve(value)
     }) 
 },
-addtoken:(value1,value2,value3,value4)=>{
+addtoken:(value1,value2,value3,value4,value5)=>{
     return new Promise((resolve,reject)=>{
         let obj={
             name:value1,
             email:value2,
             id:value3,
-            money:value4
+            money:value4,
+            orderId:objectId(value5)
         }
          db.get().collection(collections.TOKEN).insertOne(obj).then(()=>{
             resolve()
@@ -726,8 +686,16 @@ findtoken:(val)=>{
     return new Promise(async(resolve,reject)=>{
         
         let user=await db.get().collection(collections.TOKEN).findOne({id:val})
-        
-       resolve(user)
+        if(user){
+            db.get().collection(collections.TOKEN).updateOne({id:val},{
+                $set:{
+                    status:"Placed"
+                }
+            }).then(()=>{
+                resolve(user)
+            })
+        }
+       
     }) 
 },
 getpic:()=>{
@@ -737,5 +705,39 @@ getpic:()=>{
         console.log(user)
        resolve(user)
     }) 
+},
+addtoProgress:(bod)=>{
+    return new Promise(async(resolve,reject)=>{
+        
+       db.get().collection(collections.PROGRESS).insertOne(bod).then((data)=>{
+        resolve(data.ops[0]._id)
+       })
+       
+    }) 
+},
+findattbydate:(value)=>{
+    return new Promise(async(resolve,reject)=>{
+        
+        let user=await db.get().collection(collections.STATUS).find({Date:value.date}).toArray()
+        console.log(user)
+       resolve(user)
+    }) 
+},
+getUpdate:(value)=>{
+    console.log(value)
+    return new Promise(async(resolve,reject)=>{
+        
+       let val=await db.get().collection(collections.STATUS).find({student:value
+       
+           
+        
+    }).toArray()
+        
+           
+       
+       console.log(val)
+        resolve(val)
+    }) 
 }
+
 }

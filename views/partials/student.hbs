@@ -22,11 +22,11 @@
 
             {{#if look}}
             <li class="nav-item active text-white">
-              <a class="btn btn-danger " style="color:blue" href="/student-out">NO DUE WORKS<span class="sr-only">(current)</span></a>
+              <a class="btn btn-danger " style="color:blue" href="#">YOUR ATTENDANCE IS MARKED<span class="sr-only">(current)</span></a>
             </li>
             {{else}}
             <li class="nav-item active text-white">
-              <a class="btn btn-danger " href="/student-out">YOU HAVE PENDING WORKS<span class="sr-only">(current)</span></a>
+              <a class="btn btn-danger " href="/class-video">YOUR ATTENDANCE IS NOT MARKED<span class="sr-only">(current)</span></a>
             </li>
             {{/if}}
             <li class="nav-item">
@@ -75,7 +75,16 @@
        </div>
      </div>
   
-      
+      <script>
+    var socket = io("http:// 192.168.43.222:3000");
+ 
+    socket.on("messageSent", function (message) {
+        $.notify("New Message\n" + message.message + "\n\nFrom: " + message.name, {
+            autoHide: false,
+            className: "success"
+        });
+    });
+</script>
     
     
 

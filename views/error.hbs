@@ -64,3 +64,121 @@
     router.get('/cancel',(req,res)=>{
       res.send('cancelled')
     })
+
+
+
+    var canvas  = $("#canvas"),
+    context = canvas.get(0).getContext("2d"),
+    $result = $('#result');
+
+$('#fileInput').on( 'change', function(){
+    if (this.files && this.files[0]) {
+      if ( this.files[0].type.match(/^image\//) ) {
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+           var img = new Image();
+           img.onload = function() {
+             context.canvas.height = img.height;
+             context.canvas.width  = img.width;
+             context.drawImage(img, 0, 0);
+             var cropper = canvas.cropper({
+               aspectRatio: 16 / 9
+             });
+             $('#btnCrop').click(function() {
+                // Get a string base 64 data url
+                var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png"); 
+                $result.append( $('<img>').attr('src', croppedImageDataURL) );
+             });
+             $('#btnRestore').click(function() {
+               canvas.cropper('reset');
+               $result.empty();
+             });
+           };
+           img.src = evt.target.result;
+				};
+        reader.readAsDataURL(this.files[0]);
+      }
+      else {
+        alert("Invalid file type! Please select an image file.");
+      }
+    }
+    else {
+      alert('No file(s) selected.');
+    }
+});
+
+
+<img id="blah" src="#" alt="your image" style="display:block;
+                      max-width:100%;"/>
+
+const canvas=this.cropper.getCroppedCanvas();
+                croppedImage.src=canvas.toDataURL('image/png');
+
+
+let imgUrl=cropper.getCroppedCanvas().toDataURL();
+        //const val=imgUrl.split(',')[1]
+        //console.log(val)
+        const img=document.createElement('img');
+        img.src=imgUrl;
+        document.getElementById('cropResult').appendChild(img)
+
+
+
+
+
+
+
+
+function imageCrop(id){
+   import Cropper from 'cropperjs';
+const image = document.getElementById(id);
+const cropper = new Cropper(image, {
+  aspectRatio: 16 / 9,
+  crop(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+    console.log(event.detail.width);
+    console.log(event.detail.height);
+    console.log(event.detail.rotate);
+    console.log(event.detail.scaleX);
+    console.log(event.detail.scaleY);
+  },
+});
+ }
+
+
+
+
+
+
+
+
+
+
+cropper.getCroppedCanvas()toBlob(function(blob){
+           let base64data;
+           var reader=new FileReader();
+           reader.readAsDataURL(blob);
+           reader.onloadend=function(){
+               base64data=reader.result;
+               console.log('base64',base64data)
+           }
+           console.log('ajax')
+           $ajax({
+               url:'/upload-img',
+               method:'POST',
+               data:{base64data},
+               success:(res)=>{
+                   console.log(res)
+               }
+           })
+       })
+       <input type="file" class="form-control"  name="upload" id="video" >
+       db.datecol.find(
+{
+    "date": 
+    {
+        $gte: new Date((new Date().getTime() - (15 * 24 * 60 * 60 * 1000)))
+    }
+}
+).sort({ "date": -1 })

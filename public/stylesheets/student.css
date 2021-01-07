@@ -90,7 +90,7 @@ font-size: smaller;
   }
   /**login student**/
   #login .container #login-row #login-column #login-box {
-    margin-top: 50px;
+  
     max-width: 600px;
     height: 400px;
     border: 1px solid #9C9C9C;
@@ -115,6 +115,10 @@ font-size: smaller;
     margin-top: 5rem;
     margin-left:10rem;
     
+  }
+  .otp-position{
+    margin-top: 1rem;
+    margin-left:45%;
   }
   .vdobtn{
     width: max-content;
@@ -141,7 +145,49 @@ table.ui-datepicker-calendar tbody td.highlights > a {
   color:black;
   text-decoration: none;
 }
-.card{
-  float: left;
-} 
+.raz{
+  
+  vertical-align: top;
+  
+ 
+ 
+width: 3rem;
+}
+.paypal{
 
+ 
+  vertical-align: top;
+  width: 3rem;
+   
+  
+}
+.ptm{
+  
+  vertical-align: top;
+  width: 3rem;
+   
+  
+}
+.selectbox{
+  align-items: center;
+ 
+  float: left;
+}
+
+.main-card{
+  width: 350px;
+}
+.login-card{
+  width: 300px;
+}
+.gallery-head{
+  color: rgb(19, 19, 163);
+  margin-left: 40%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+}
+.failed{
+  margin-left: 43%;
+  margin-top: 2rem;
+}
