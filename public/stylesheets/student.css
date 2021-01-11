@@ -19,7 +19,7 @@
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+   
     font-size: 18px;
   }
   
@@ -50,12 +50,7 @@
   .false{
     color:rgb(197, 43, 43);
   }
-  .view-dwnld{
-    align-items: center;
-    margin-left: 47%;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
+  
   .collapse-content .fa.fa-heart:hover {
     color: #f44336 !important;
   }
@@ -84,30 +79,10 @@ font-size: smaller;
   .card-color{
     color: white;
   }
-  .card-today{
-    float: left;
-    margin: 1rem;
-  }
+ 
   /**login student**/
-  #login .container #login-row #login-column #login-box {
   
-    max-width: 600px;
-    height: 400px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-  }
-  #login .container #login-row #login-column #login-box #login-form {
-    padding: 20px;
-  }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -70px;
-  }
-  .student-login{
-    margin: 0;
-  padding: 0;
-  background-color:#0b9c90;
-  height: 100vh;
-  }
+  
   .study-materials{
     margin-top: 5rem;
   }
@@ -116,10 +91,7 @@ font-size: smaller;
     margin-left:10rem;
     
   }
-  .otp-position{
-    margin-top: 1rem;
-    margin-left:45%;
-  }
+  
   .vdobtn{
     width: max-content;
   }

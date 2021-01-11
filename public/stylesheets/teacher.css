@@ -23,10 +23,7 @@
     
   }
   
-  form {
-    padding: 0;
-    margin-left: 15%
-  }
+  
   
   .abc {
     background-color:#0b9c90;
@@ -187,14 +184,11 @@
   color: #0b9c90;
 }
 /**add students button**/
-.add-student{
-  margin-left: 50%;
-    margin-top: 1rem;
-   
-}
+
 /**student table**/
 .student-details{
   font-size: medium;
+  
 }
 .table-design{
   border-color:#0b9c90;
@@ -219,13 +213,11 @@
 .heading{
 color: #0b9c90;
 }
-.background-form{
-  background-color: #e8f0ef;
-  
-}
+
 /**student table**/
 .student{
   font-size: small;
+  color: white;
 }
 .vc {border-left: 6px solid #0b9c90;
   border-radius: 1rem;
@@ -242,9 +234,7 @@ color: #0b9c90;
 .uploads{
   padding: .5rem;
 }
-.upload-box{
-margin-top: .5rem;
-}
+
 .open-pdf{
   color: #9e280b;
   font:smaller;
@@ -280,7 +270,4 @@ margin-top: .5rem;
   border: 1px solid black;
 }
 /** table**/
-.teacher-payhead{
-  margin-left: 42%;
-  margin-top: 5rem;
-}
+

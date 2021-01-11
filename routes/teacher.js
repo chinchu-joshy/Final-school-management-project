@@ -98,7 +98,7 @@ router.get("/students", (req, res) => {
     res.render("teacher/students", { teacher: true, students });
   });
 });
-router.get("/add-students", (req, res) => {
+router.get("/add-studentss", (req, res) => {
   res.render("teacher/add-students", { teacher: true });
 });
 
@@ -490,8 +490,8 @@ router.post("/normal-event", (req, res) => {
             res.send("ERROR");
           }
         });
-      } else if (file.mimetype == "image/jpeg") {
-        file.mv("public/events/" + response + ".jpg", (err, done) => {
+      } else if (file.mimetype == "video/.mp4") {
+        file.mv("public/events/" + response + ".mp4", (err, done) => {
           if (!err) {
             res.render("teacher/events", { teacher: true });
           } else {
@@ -499,7 +499,7 @@ router.post("/normal-event", (req, res) => {
           }
         });
       } else {
-        file.mv("public/events/" + response + ".mp4", (err, done) => {
+        file.mv("public/events/" + response + ".png", (err, done) => {
           if (!err) {
             res.render("teacher/events", { teacher: true });
           } else {
@@ -535,8 +535,8 @@ router.post("/paid-event", (req, res) => {
             res.send("ERROR");
           }
         });
-      } else if (file.mimetype == "image/jpeg") {
-        file.mv("public/events/" + response + ".jpg", (err, done) => {
+      } else if (file.mimetype == "video/mp4") {
+        file.mv("public/events/" + response + ".mp4", (err, done) => {
           if (!err) {
             res.render("teacher/events", { teacher: true });
           } else {
@@ -544,7 +544,7 @@ router.post("/paid-event", (req, res) => {
           }
         });
       } else {
-        file.mv("public/events/" + response + ".mp4", (err, done) => {
+        file.mv("public/events/" +response+ ".png", (err, done) => {
           if (!err) {
             res.render("teacher/events", { teacher: true });
           } else {
@@ -647,6 +647,17 @@ router.post("/find-attendance", async (req, res) => {
   let students = await teacherHelper.findattbydate(req.body);
   res.render("teacher/show-attendance-by-day", { teacher: true, students });
 });
+router.post("/add-marks",async(req,res)=>{
+  let view = await teacherHelper.getAssignment(req.body.student);
+
+    let details = await teacherHelper.getAttByStudentid(req.body.student);
+  
+    let update = await teacherHelper.getUpdate(req.body.student);
+  teacherHelper.assignmentMarks(req.body).then((response)=>{
+   
+    res.render("teacher/view-assignment",{teacher:true,details,update,view})
+  })
+})
 
 
 module.exports = router;

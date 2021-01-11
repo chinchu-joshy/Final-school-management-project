@@ -2,7 +2,7 @@
 <div class="container ">
     <div class="row">
         <div class="col-md-6  vi col-12">
-           <h3>Events</h3>
+           <h3 style="color: white;">Events</h3>
            
            <ul class="list-group">
   
@@ -13,7 +13,7 @@
   <span style="color: red;">Event price: Rs.{{this.amount}}</span>
   <br>
   {{#if this.file}}
-  <a class="open-pdf"  href="/events/{{this.file}}"><i class="fas fa-images"></i></a>
+  <a class="open-pdf"  href="/events/{{this._id}}.png"><i class="fas fa-images"></i></a>
   <a class="open-pdf"  href="/events/{{this._id}}.pdf"><i class="fas fa-file-pdf"></i></a>
      <a class="open-pdf"  href="/events/{{this._id}}.mp4"><i class="fas fa-video"></i></a>
   </li>
@@ -35,7 +35,7 @@
 
         </div>
          <div class="col-md-6  vi col-12">
-             <h3>Notice board</h3>
+             <h3 style="color: white;">Notice board</h3>
               <ul class="list-group">
            {{#each announcement}}
            

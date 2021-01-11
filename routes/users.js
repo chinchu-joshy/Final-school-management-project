@@ -216,12 +216,12 @@ router.post("/student-login", (req, res) => {
 
       //console.log(req.session.user)
     } else {
-      req.session.loginerr = true;
-      res.redirect("/student-login");
+      let value=req.session.loginerr
+      value = true;
+      res.render("student/student-login",{value});
     }
   });
 });
-
 router.get("/student-out", (req, res) => {
   req.session.user = null;
   //console.log(req.session.student)
@@ -764,4 +764,16 @@ router.get("/show", async (req, res) => {
     user: req.session.user,
   });
 });
+router.get('/student-profile',async(req,res)=>{
+  let val = req.session.user.name;
+ let profile=await  teacherHelper.studentProfile(val)
+  res.render("student/student-profile", {student: true, user: req.session.user,profile});
+})
 module.exports = router;
+
+
+
+
+
+
+

@@ -1,15 +1,19 @@
 <section>
     <div class="container">
         <div class="row">
-          <div class="col-md-12 card mt-2" style="margin-left: 25%;background-color:rgb(17, 17, 56)">
-        
+          <div class="col-md-12 card  attendhead" style="">
+       
         {{#each update}} 
-        <p style="color: rgb(238, 238, 241); background-color:rgb(17, 17, 56)">{{this.Date}}  {{this.attendance}}</p>
+        <p style="color: rgb(238, 238, 241); background-color:rgb(17, 17, 56)">
+          {{this.Date}}  {{this.attendance}}</p>
         {{/each}}
+          </div>
+          <div class="col-md-12 col-12">
+            <p class="swipe">Swipe to view full</p>
           </div>
           
            
-              <div class="col-md-12 col-12">
+              <div class="col-md-12 col-12 table-responsive-md">
  <table class="table mt-5 ml-2">
   <thead class="table-design" >
     <tr >
@@ -26,7 +30,7 @@
   </thead>
   <tbody>
  {{#each view}}
- <form class=" today-form" action="/mark-submit" method="post" enctype="multipart/form-data"></form>
+ <form class=" today-form" id="checkout-form" action="/add-marks" method="post" >
     <tr>
      
      
@@ -37,11 +41,15 @@
       <td class="student">
          
           <input type="text" class=" mark" name="mark" value="{{this.mark}}" >
+          <input type="text" name="work" value="{{this.workname}}" hidden>
+         <input type="text" name="student" value="{{this.student}}" hidden>
         
       </td>
       
       <td >
-         <button type="submit" class="btn btn-success asgnmt ">Submit</button>
+         <button type="submit" class="btn btn-success asgnmt ">Submit<span id="kk">
+
+         </span></button>
         </td>
        
     </tr>
@@ -58,3 +66,6 @@
         </div>
     </div>
 </section>
+<script>
+   
+</script>

@@ -1,8 +1,31 @@
 
    <header class="main ">
-  <div class="container">
+  <div class="container sec1">
     <div class="row align-items-center">
-    <div class="col-md-12 ">
+       <div class="col-md-12 ml-auto loggdiv">
+           
+           {{#if user}}
+            
+              <a class="btn btn-danger logoutt ml-auto " href="/student-out">Logout <span class="sr-only">(current)</span></a>
+           
+            {{else}}
+            
+              <a class="btn btn-danger logoutt ml-auto " href="/student-login">Login <span class="sr-only">(current)</span></a>
+            
+            {{/if}}
+
+            {{#if look}}
+          
+              <a class="btn btn-danger logoutt ml-auto" style="color:blue" href="#">Present<span class="sr-only">(current)</span></a>
+            
+            {{else}}
+           
+              <a class="btn btn-danger logoutt ml-auto " href="/class-video">Absent<span class="sr-only">(current)</span></a>
+            
+            {{/if}}
+           
+        </div>
+    <div class="col-md-12 col-12 sec2">
       <nav class="navbar navbar-expand-lg navbar-light ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +35,7 @@
           <ul class="navbar-nav">
             {{#if user}}
              <li class="nav-item active text-white">
-              <a class="btn btn-danger " href="/student-out">Logout <span class="sr-only">(current)</span></a>
+              <a class="btn btn-danger log" href="/student-out">Logout <span class="sr-only">(current)</span></a>
             </li>
             {{else}}
              <li class="nav-item active text-white">
@@ -22,24 +45,34 @@
 
             {{#if look}}
             <li class="nav-item active text-white">
-              <a class="btn btn-danger " style="color:blue" href="#">YOUR ATTENDANCE IS MARKED<span class="sr-only">(current)</span></a>
+              <a class="btn btn-danger " style="color:blue" href="#">Present<span class="sr-only">(current)</span></a>
             </li>
             {{else}}
             <li class="nav-item active text-white">
-              <a class="btn btn-danger " href="/class-video">YOUR ATTENDANCE IS NOT MARKED<span class="sr-only">(current)</span></a>
+              <a class="btn btn-danger " href="/class-video">Absent<span class="sr-only">(current)</span></a>
             </li>
             {{/if}}
             <li class="nav-item">
-              <a class="nav-link" href="#head2"></a>
+              <a href="/student-home" class="nav-link">Home</a>
+ 
+              <a href="/student-profile"class=" nav-link"> Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#head3"></a>
+              <a href="/today-task" class=" nav-link"></i>Todays task</a>
+ 
+  <a href="/class-works" class="nav-link">Class works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#head4" ></a>
+              <a href="/study-materials" class="nav-link">Study materials</a>
+  <a href="/class-video" class="nav-link">Class Video</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#head5" ></a>
+               <a href="/student-announcement" class="nav-link">Announcements</a>
+  <a href="/student-events" class="nav-link">Events</a>
+            </li>
+            <li class="nav-item">
+               <a href="/student-attendance"class="nav-link">Attendance</a>
+  <a href="/student-photos" class="nav-link">Photos</a>
             </li>
           </ul>
         </div>
@@ -48,14 +81,14 @@
    </div>
    </div>
 </header>
-     <div class="container section">
+     <div class="container section sidearea">
        <div class="row">
          <div class="col">
            {{#if user}}
            <div class="sidebar">
   <a href="/student-home"><i class="fa fa-fw fa-home"></i> Home</a>
  
-  <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+  <a href="/student-profile"><i class="fa fa-fw fa-user"></i> Profile</a>
   
   <a href="/today-task"><i class="fas fa-clock"></i>Todays task</a>
  
@@ -75,16 +108,7 @@
        </div>
      </div>
   
-      <script>
-    var socket = io("http:// 192.168.43.222:3000");
- 
-    socket.on("messageSent", function (message) {
-        $.notify("New Message\n" + message.message + "\n\nFrom: " + message.name, {
-            autoHide: false,
-            className: "success"
-        });
-    });
-</script>
+      
     
     
 

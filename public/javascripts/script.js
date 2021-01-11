@@ -16,23 +16,10 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
   }
 }
+
 function enablefield(){
    
-        document.getElementById("myfield").disabled = false;
-   
-      
-  }
-  function enablefile(){
-
-   
-    document.getElementById("myworld").disabled = false;
-    
-
-  
-}
-function enablefiles(){
-   
-  document.getElementById("myfiles").disabled = false;
+  document.getElementById("myfield").disabled = false;
 
 
 }
