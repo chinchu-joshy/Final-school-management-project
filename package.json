@@ -2,8 +2,9 @@
   "name": "schoolmanagement",
   "version": "v12.18.3",
   "private": true,
+  "main":"server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
